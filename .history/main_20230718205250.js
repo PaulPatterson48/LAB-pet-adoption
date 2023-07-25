@@ -240,50 +240,6 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
-  const cardsOnDom = (array) => {
-
-    let domString = "";
-    
-    for(const product of array){
-      
-      domString += `
-      <div class="card" style="width: 18rem;">
-      <div class="card-body text-line">
-        <header id="title" class="text-center"> 
-          <h2>${product.productName}</h2>
-        </header>
-        <div class="card-body">
-          <img src="${product.imageUrl}" class="card-img-top" alt="${product.productName}">
-          <p class="card-text">${product.productDescription}</p>
-          <p class="card-text available">Available!</p>
-        </div>
-  
-        <div class="specifications">
-          <header>
-            <h5>Specifications </h5>
-          </header>
-          <p>Size: ${product['specifications'].size}</p>
-          <p>Size: ${product['specifications'].weight}</p>
-          <footer>
-            <p>Specifications are valid until ${product['specifications'].valid}</p>
-          </footer>
-        </div>
-  
-        <div class="pricing">
-          <header>
-            <h5>Pricing</h5>
-          </header>
-          <p>1: ${product['pricing'].one}</p>
-          <p>2-50: ${product['pricing'].two}</p>
-          <p>51+: ${product['pricing'].three}</p>
-        </div>
-      </div>
-      </div>
-      `;
-    }
-  
-    renderToDom('#app', domString);
-  };
-  
-  cardsOnDom(products);
-  
+//for(const element of pets){
+  console.log("element.name")
+//};

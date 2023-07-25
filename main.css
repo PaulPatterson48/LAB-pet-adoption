@@ -1,0 +1,26 @@
+Main.css
+#app{
+  display:flex;
+  flex-wrap: wrap;
+}
+.card{
+  flex-basis: 31%;
+  margin: 1rem;
+}
+.card{
+    border: 1px solid lightblue;
+}
+.card-text {
+  text-align: left;
+}
+#title{
+  border: 1px dotted black;
+}
+.available{
+  background-color: saddlebrown;
+  color: yellow;
+  margin: 0rem;
+}
+.card-body{
+  padding: 0%
+}
