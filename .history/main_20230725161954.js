@@ -259,10 +259,7 @@ for(const pet of array){
     <div class="card-header">
       <h5 class="card-title">${pet.name}</h5>
     </div>
-    <img src="${pet.imageUrl}" 
-      class="card-img-top" 
-      alt="${pet.name}">
-      </img>
+    <img src="${pet.imageUrl}" class="card-img-top" alt="${pet.name}">
     <div class="card-body">
       <p class="card-text">${pet.color}</p>
       <p class="card-text">${pet.specialSkill}</p>

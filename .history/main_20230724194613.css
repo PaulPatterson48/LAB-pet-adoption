@@ -4,16 +4,16 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-.card{
+/* .card{
   flex-basis: 31%;
-  margin: 1%;
+  margin: 1rem;
   border: 1px solid lightblue;
-} 
-
+} */
+/* 
 .card-text {
   text-align: left;
 }
-/* #title{
+#title{
   border: 1px dotted black;
 }
 .available{

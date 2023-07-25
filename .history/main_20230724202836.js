@@ -254,15 +254,12 @@ for(const pet of array){
   `
   <div class="card" style="width: 18rem;">
     <div class="delete">
-      <button type="button" id="delete-btn-pet--${pet.id}" class="btn-danger">delete</button>      
+      <button type="button" id="delete-btn-pet--${pet.id}" class="btn-danger"></button>      
     </div>
     <div class="card-header">
       <h5 class="card-title">${pet.name}</h5>
     </div>
-    <img src="${pet.imageUrl}" 
-      class="card-img-top" 
-      alt="${pet.name}">
-      </img>
+    <img src="${pet.imageUrl}" class="card-img-top" alt="${pet.name}">
     <div class="card-body">
       <p class="card-text">${pet.color}</p>
       <p class="card-text">${pet.specialSkill}</p>
@@ -338,7 +335,7 @@ const petForm = () => {
       <div class="mb-3"> 
       <label for="imageUrl" class="form-label">Upload Image:</label>
       <input 
-        type="url" 
+        type="text" 
         class="form-control" 
         id="imageUrl"
       />
@@ -351,7 +348,7 @@ const petForm = () => {
 show.addEventListener("click",() => {
 petForm()
 })
-//Find the pet object length is and add 1 for the id-->
+
 const createPet = (e) => {
   e.preventDefault();
 
@@ -368,18 +365,3 @@ const createPet = (e) => {
   cardsOnDom(pets);
   form.reset();
 };
-form.addEventListener("submit", createPet)
-
-const app = document.querySelector("#app")
-
-// delete button functionality. deletes card and rerenders dom
-app.addEventListener('click', (e) => {
-  if (e.target.id.includes("delete")) {  
-    const [, int] = e.target.id.split('--');
-    //variable called index in order to find the number -->
-    const index = pets.findIndex((pet) => pet.id === Number(int));
-    pets.splice(index, 1);
-    //rerender cardsOnDom
-    cardsOnDom(pets);
-  }
-});

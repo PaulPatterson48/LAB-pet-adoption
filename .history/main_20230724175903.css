@@ -1,19 +1,20 @@
-
-#app{
-  display: flex;
+Main.css
+#container{
+  display:flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
 .card{
   flex-basis: 31%;
-  margin: 1%;
-  border: 1px solid lightblue;
-} 
-
+  margin: 1rem;
+}
+.card{
+    border: 1px solid lightblue;
+}
 .card-text {
   text-align: left;
 }
-/* #title{
+#title{
   border: 1px dotted black;
 }
 .available{
@@ -23,4 +24,4 @@
 }
 .card-body{
   padding: 0%
-} */
+}

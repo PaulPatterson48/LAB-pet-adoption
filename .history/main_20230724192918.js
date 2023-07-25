@@ -240,9 +240,9 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
-const renderToDom = (divId, html) => {
+const renderToDom = (divId, htmlToRender) => {
   const selectAPet = document.querySelector(divId)
-  selectAPet.innerHTML = html;
+  selectAPet.innerHTML = htmlToRender;
 };
 
 const cardsOnDom = (array) => {
@@ -254,15 +254,17 @@ for(const pet of array){
   `
   <div class="card" style="width: 18rem;">
     <div class="delete">
-      <button type="button" id="delete-btn-pet--${pet.id}" class="btn-danger">delete</button>      
+      <button type="button" id="delete-btn-pet--${pet.id}" class="btn-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+        </svg>
+      </button>
     </div>
     <div class="card-header">
       <h5 class="card-title">${pet.name}</h5>
     </div>
-    <img src="${pet.imageUrl}" 
-      class="card-img-top" 
-      alt="${pet.name}">
-      </img>
+    <img src="${pet.imageUrl}" class="card-img-top" alt="${pet.name}">
     <div class="card-body">
       <p class="card-text">${pet.color}</p>
       <p class="card-text">${pet.specialSkill}</p>
@@ -273,113 +275,8 @@ for(const pet of array){
   </div>
   `
 }
-renderToDom('#app', domString);
+renderToDom('#card-container', domString);
 };
 cardsOnDom(pets);
 
-const filterAllPets = (animals) =>{
-  const filterAnimals = pets.filter((t) => t.type === animals)
-  cardsOnDom(filterAnimals)
-}
-
-let animals = document.querySelector("#show-button")
-animals.addEventListener("click", (e)=>{
-  switch (e.target.id){
-    case "cat-btn": filterAllPets("cat")
-    break;
-    case "dog-btn": filterAllPets("dog")
-    break;
-    case "dino-btn": filterAllPets("dino")
-    break;
-    default:cardsOnDom(pets)
-  }
-
-})
-const show = document.querySelector("#show-form")
-const form = document.querySelector('form')
-const petForm = () => {
-
-  let domString = '';
-
-  domString += 
-  `
-    <div class="mb-3">
-      <label for="name" class="form-label">Name:</label>
-      <input 
-        type="text" 
-        class="form-control" 
-        id="name"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="color" class="form-label">Color:</label>
-      <input 
-        type="text" 
-        class="form-control" 
-        id="color"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="specialSkill" class="form-label">Special Skill:</label>
-      <input 
-        type="text" 
-        class="form-control" 
-        id="specialSkill"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="type" class="form-label">Type:</label>
-      <input 
-        type="text" 
-        class="form-control" 
-        id="type"
-      />
-      </div>
-      <div class="mb-3"> 
-      <label for="imageUrl" class="form-label">Upload Image:</label>
-      <input 
-        type="url" 
-        class="form-control" 
-        id="imageUrl"
-      />
-    </div>
-    <button type="submit" class="btn btn-primary mb-3 submit">Submit</button>
-  
-  `
-  renderToDom("#pet-form", domString);
-};
-show.addEventListener("click",() => {
-petForm()
-})
-//Find the pet object length is and add 1 for the id-->
-const createPet = (e) => {
-  e.preventDefault();
-
-  const petObj = {
-    id: pets.length + 1,
-    name: document.querySelector('#name').value,
-    color: document.querySelector('#color').value,
-    specialSkill: document.querySelector('#specialSkill').value,
-    type: document.querySelector('#type').value,
-    imageUrl: document.querySelector('#imageUrl').value,
-  }
-  
-  pets.push(petObj);
-  cardsOnDom(pets);
-  form.reset();
-};
-form.addEventListener("submit", createPet)
-
-const app = document.querySelector("#app")
-
-// delete button functionality. deletes card and rerenders dom
-app.addEventListener('click', (e) => {
-  if (e.target.id.includes("delete")) {  
-    const [, int] = e.target.id.split('--');
-    //variable called index in order to find the number -->
-    const index = pets.findIndex((pet) => pet.id === Number(int));
-    pets.splice(index, 1);
-    //rerender cardsOnDom
-    cardsOnDom(pets);
-  }
-});
+const filterContainer = document.querySelector('#show-button');

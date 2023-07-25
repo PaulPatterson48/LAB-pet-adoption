@@ -338,7 +338,7 @@ const petForm = () => {
       <div class="mb-3"> 
       <label for="imageUrl" class="form-label">Upload Image:</label>
       <input 
-        type="url" 
+        type="text" 
         class="form-control" 
         id="imageUrl"
       />
